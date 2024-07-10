@@ -1,9 +1,13 @@
 import { useState } from "react";
 
-export const SearchBar = ({ onSubmit }) => {
+interface SearchBarProps {
+  onSubmit: (query: string) => void;
+}
+
+export const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 

@@ -10,16 +10,22 @@ import {
   ImageModal,
 } from "components";
 
-const App = () => {
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [images, setImages] = useState([]);
-  const [showBtn, setShowBtn] = useState(false);
-  const [isEmpty, setIsEmpty] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [selectImg, setSelectImg] = useState(null);
-  const [isOpenModal, setIsOpenModal] = useState(false);
+interface Image {
+  id: string;
+  url: string;
+  alt: string;
+}
+
+const App: React.FC = () => {
+  const [query, setQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [images, setImages] = useState<Image[]>([]);
+  const [showBtn, setShowBtn] = useState<boolean>(false);
+  const [isEmpty, setIsEmpty] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [selectImg, setSelectImg] = useState<Image | null>(null);
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
   useEffect(() => {
     if (!query) return;
@@ -45,7 +51,7 @@ const App = () => {
     getData();
   }, [query, page]);
 
-  const onSubmit = (newQuery) => {
+  const onSubmit = (newQuery:string) => {
     if (!newQuery.trim()) {
       toast.error("Search field is epmty");
       return;
@@ -62,7 +68,7 @@ const App = () => {
     setPage((prev) => prev + 1);
   };
 
-  const handleModalOpen = (img) => {
+  const handleModalOpen = (img: Image) => {
     setIsOpenModal(true);
     setSelectImg(img);
   };

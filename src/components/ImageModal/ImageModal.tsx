@@ -17,7 +17,25 @@ const customStyles = {
   },
 };
 
-export const ImageModal = ({ modalIsOpen, closeModal, selectImg }) => {
+interface ImgUrls {
+  regular: string;
+}
+
+interface SelectImg {
+  urls: ImgUrls;
+}
+
+interface ImgModalProps {
+  modalIsOpen: boolean;
+  closeModal: () => void;
+  selectImg: SelectImg | null;
+}
+
+export const ImageModal: React.FC<ImgModalProps> = ({
+  modalIsOpen,
+  closeModal,
+  selectImg,
+}) => {
   return (
     <div>
       <Modal

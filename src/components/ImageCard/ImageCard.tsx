@@ -1,4 +1,18 @@
-export const ImageCard = ({ alt_description, urls, handleModalOpen }) => {
+export interface ImageCardProps {
+  alt_description: string;
+  urls: ImageUrls;
+  handleModalOpen: (image: { urls: ImageUrls; alt: string }) => void;
+}
+
+export interface ImageUrls {
+  small: string;
+}
+
+export const ImageCard: React.FC<ImageCardProps> = ({
+  alt_description,
+  urls,
+  handleModalOpen,
+}) => {
   return (
     <li>
       <img

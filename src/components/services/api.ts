@@ -2,7 +2,20 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://api.unsplash.com/";
 
-export const getImg = async (query, page) => {
+interface UnsplashResponse {
+  results: any[];
+  total_pages: number;
+}
+
+interface GetImgParams {
+  query: string;
+  page: number;
+}
+
+export const getImg = async ({
+  query,
+  page,
+}: GetImgParams): Promise<UnsplashResponse> => {
   const { data } = await axios.get("search/photos", {
     headers: {
       Authorization: "Client-ID 3epLdoRXfdB02LB_Es4o_55chXkvzZ56DNswKj1YESs",
