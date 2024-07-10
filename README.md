@@ -1,1 +1,1 @@
-goit-react-hw-03
+goit-typescript-hw-02
