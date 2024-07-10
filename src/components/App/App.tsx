@@ -1,6 +1,6 @@
 import { toast, Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
-import { getImg } from "./components/services/api";
+import { getImg } from "../services/api";
 import {
   SearchBar,
   ImageGallery,
