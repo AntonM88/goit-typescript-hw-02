@@ -2,8 +2,14 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://api.unsplash.com/";
 
+interface ImgResult {
+  id: string;
+  urls: { small: string; regular: string };
+  description: string;
+}
+
 interface UnsplashResponse {
-  results: any[];
+  results: ImgResult[];
   total_pages: number;
 }
 
